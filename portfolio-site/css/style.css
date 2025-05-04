@@ -1,0 +1,244 @@
+/* カラーテーマ */
+:root {
+  --white: #fff;
+  --black: #111;
+  --red: #ff6363;
+  --navy: #2c3e50;
+}
+
+/* 基本設定 */
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+
+}
+
+/* ヘッダー */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo img {
+  height: 50px; /* 必要に応じて調整 */
+  vertical-align: middle;
+}
+
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 1rem 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--white);
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0%;
+  background: var(--red);
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* セクション見出し */
+.section {
+  padding: 4rem 1rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+.section-title {
+  padding-top: 5%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--black);
+  border-bottom: 2px solid var(--red);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.section-sub {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Hero */
+.hero {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+}
+
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero img{
+  width: 100%;
+}
+
+.auto-scroll-wrapper {
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 2rem 0;
+}
+
+.auto-scroll-wrapper {
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 2rem 0;
+}
+
+.auto-scroll-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll-alternate 5s ease-in-out infinite alternate;
+}
+
+.auto-scroll-wrapper:hover .auto-scroll-track {
+  animation-play-state: paused;
+}
+
+.auto-scroll-track img {
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* アニメーション：左に→右に往復 */
+@keyframes scroll-alternate {
+  0% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(-70%);
+  }
+}
+
+
+
+/* カテゴリカード（チェキ風） */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.category-card {
+  background: var(--white);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-image {
+  width: calc(100% - 2rem);
+  margin-top: 1rem;
+  object-fit: cover;
+  border: 3px solid #fff;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.category-card h3 {
+  margin: 1rem 0 0.4rem;
+  font-size: 1.1rem;
+  color: var(--red);
+  text-align: center;
+}
+
+.category-card p {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  margin: 0 1rem;
+}
+
+/* Pick Up */
+.featured-works .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-works a {
+  text-decoration: none;
+  color: var(--black);
+  transition: transform 0.2s ease-in-out;
+}
+
+.featured-works a:hover {
+  transform: scale(1.03);
+}
+
+.featured-works img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  transition: box-shadow 0.3s;
+}
+
+.featured-works img:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* フッター */
+footer {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+}
+
+.work-image {
+  width: 60%;
+  border-radius: 8px;
+  display: block;
+  transition: box-shadow 0.3s;
+}
