@@ -12,14 +12,12 @@ body {
   margin: 0;
   background: var(--white);
   color: var(--black);
-
 }
+
 
 /* ヘッダー */
 header {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   background: var(--navy);
   color: var(--white);
@@ -73,15 +71,11 @@ nav a:hover::after {
   max-width: 960px;
   margin: auto;
 }
-
 .section-title {
-  padding-top: 5%;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   color: var(--black);
   border-bottom: 2px solid var(--red);
-  display: inline-block;
-  padding-bottom: 0.3rem;
 }
 
 .section-sub {
@@ -110,43 +104,46 @@ nav a:hover::after {
 }
 
 .auto-scroll-wrapper {
-  overflow: hidden;
   background: #f8f8f8;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 }
 
-.auto-scroll-wrapper {
-  overflow: hidden;
-  background: #f8f8f8;
-  padding: 2rem 0;
+/* タイトルのスタイル（固定表示） */
+.auto-scroll-wrapper .section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+
 }
 
+/* 横スクロール可能なトラック */
 .auto-scroll-track {
   display: flex;
   gap: 2rem;
-  animation: scroll-alternate 5s ease-in-out infinite alternate;
+  overflow-x: auto;           /* 横スクロール可能に */
+  overflow-y: hidden;         /* 縦スクロール無効に */
+  scroll-behavior: smooth;    /* スムーズスクロール */
+  -webkit-overflow-scrolling: touch; /* iOS対応 */
+  padding-bottom: 1rem;
 }
 
-.auto-scroll-wrapper:hover .auto-scroll-track {
-  animation-play-state: paused;
+/* スクロールバーのスタイル（お好みで） */
+.auto-scroll-track::-webkit-scrollbar {
+  height: 8px;
+}
+.auto-scroll-track::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
+/* 画像の見た目 */
 .auto-scroll-track img {
   height: 180px;
   flex-shrink: 0;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-/* アニメーション：左に→右に往復 */
-@keyframes scroll-alternate {
-  0% {
-    transform: translateX(10%);
-  }
-  100% {
-    transform: translateX(-70%);
-  }
-}
 
 
 
