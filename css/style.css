@@ -193,7 +193,7 @@ nav a:hover::after {
 }
 
 /* 横スクロールカード */
-.card-wrapper {
+.scroll-gallery {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
@@ -203,7 +203,7 @@ nav a:hover::after {
   margin: 0 auto;
 }
 
-.card-wrapper img {
+.scroll-gallery img {
   height: 150px;
   border-radius: 10px;
   flex-shrink: 0;
@@ -211,11 +211,11 @@ nav a:hover::after {
 }
 
 /* スクロールバー */
-.card-wrapper::-webkit-scrollbar {
+.scroll-gallery::-webkit-scrollbar {
   height: 6px;
 }
 
-.card-wrapper::-webkit-scrollbar-thumb {
+.scroll-gallery::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
