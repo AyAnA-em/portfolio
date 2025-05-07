@@ -223,7 +223,7 @@ nav a:hover::after {
 /* カテゴリカード */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 20px));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
@@ -249,8 +249,8 @@ nav a:hover::after {
 /* カテゴリ画像 */
 .category-image-wrapper {
   position: relative;
-  padding: 10px;  /* 画像と枠の間に白い枠を追加 */
-  background-color: #fff; /* 追加された枠の色を白に */
+  padding: 10px;
+  background-color: #fff;
 }
 
 .category-image {
