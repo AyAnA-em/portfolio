@@ -25,13 +25,13 @@
   <main>
     <section class="section hero">
       <div class="container">
-        <h2 class="section-title">PROFILEPROFILE</h2>
+        <h2 class="section-title">PROFILE</h2>
       <p class="section-sub">経歴と作品概要</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="category-grid">
+      <div class="category-grid" id="random-grid">
         <a class="category-card" href="AspectLamp/index.html">
           <img src="images/stained-glass.jpg" alt="ステンドグラスの照明" class="category-image">
           <h3>Aspect Lamp</h3>
@@ -65,5 +65,16 @@
   <footer>
     <p>&copy; 2025 AyAnA. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const grid = document.getElementById("random-grid");
+      const cards = Array.from(grid.children);
+      const shuffled = cards.sort(() => Math.random() - 0.5);
+      shuffled.forEach(card => grid.appendChild(card));
+    });
+  </script>
+
+
 </body>
 </html>
