@@ -77,7 +77,6 @@ nav a:hover::after {
   display: flex;
   flex-direction: column;
   text-align: center;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -149,16 +148,15 @@ nav a:hover::after {
 
 /* Hero セクション */
 .hero {
-  background: var(--black);
-  text-align: center;
-}
-
-.hero {
   background: url("../images/Header.png") center/cover no-repeat;
   color: var(--white);
   text-align: center;
-  padding: 100px 20px;
   position: relative;
+  max-width: 100% !important;
+  width: 100%;
+  margin: 0;
+  padding: 100px 20px;
+  box-sizing: border-box;
 }
 
 .hero::before {
@@ -302,6 +300,10 @@ footer {
   padding: 1rem 0;
 }
 
+#random-grid{
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   header {
@@ -331,5 +333,19 @@ footer {
 
   .category-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0 0;
+  }
+
+  .badge-overlay{
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  #random-grid{
+  grid-template-columns: 1fr 1fr 1fr;
   }
 }
