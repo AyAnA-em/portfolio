@@ -209,6 +209,12 @@ nav a:hover::after {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.scroll-gallery::after {
+  content: "";
+  flex: 0 0 1.5rem;
+}
+
+
 /* スクロールバー */
 .scroll-gallery::-webkit-scrollbar {
   height: 6px;
@@ -319,6 +325,10 @@ footer {
 
   main {
     padding-top: 110px;
+  }
+  
+  .scroll-gallery{
+    width: 100vw
   }
 
   .link-cards {
