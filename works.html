@@ -31,7 +31,7 @@
     </section>
 
     <section class="section">
-      <div class="category-grid" id="random-grid">
+      <div class="category-grid random-grid">
         <a class="category-card" href="AspectLamp/index.html">
           <img src="images/stained-glass.jpg" alt="ステンドグラスの照明" class="category-image">
           <h3>Aspect Lamp</h3>
@@ -67,12 +67,17 @@
   </footer>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
-      const grid = document.getElementById("random-grid");
+      const allGrids = document.querySelectorAll(".random-grid");
+
+    allGrids.forEach(grid => {
       const cards = Array.from(grid.children);
       const shuffled = cards.sort(() => Math.random() - 0.5);
       shuffled.forEach(card => grid.appendChild(card));
+      });
     });
+
   </script>
 
 
