@@ -13,6 +13,7 @@
   --navy: #2c3e50;
 }
 
+
 /* ベーススタイル */
 body {
   font-family: 'Helvetica Neue', sans-serif;
@@ -24,8 +25,8 @@ body {
 /* メイン */
 main {
   overflow: hidden;
-  padding-top: 60px;
   padding-bottom: 4rem;
+  padding-top: 60px;
 }
 
 /* ヘッダー */
@@ -43,6 +44,7 @@ header {
   height: 60px;
   padding: 0 1.5rem;
 }
+
 .logo img {
   height: 50px;
 }
@@ -55,6 +57,7 @@ nav a {
   color: var(--white);
   text-decoration: none;
   position: relative;
+  padding: 5px 0;
 }
 nav a::after {
   content: "";
@@ -120,9 +123,22 @@ nav a:hover::after {
   text-align: center;
 }
 
-.section-list{
-  text-align: center;
-  font-weight: bold;
+.section-list {
+    text-align: left; /* リストのテキストを左寄せに */
+    font-weight: bold;
+    list-style: none; /* デフォルトのリストマークを削除 */
+    padding: 0;
+    margin: 0 auto 1.5rem; /* 中央寄せと下マージン */
+    max-width: 700px; /* リストの最大幅 */
+}
+
+.section-list li {
+    background-color: #f0f0f0; /* リスト項目の背景色を少し明るく */
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 0.5rem; /* 各項目の下マージン */
+    border-radius: 8px;
+    color: var(--navy);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* 軽い影 */
 }
 
 
@@ -154,49 +170,83 @@ nav a:hover::after {
 
 /* Hero セクション */
 .hero {
-  background: url("../images/Header.png") center/cover no-repeat;
-  color: var(--white);
-  text-align: center;
-  position: relative;
-  max-width: 100% !important;
-  width: 100%;
-  margin: 0;
-  padding: 100px 20px;
-  box-sizing: border-box;
+    /* backgroundプロパティは削除 */
+    /* background: url("../images/Header.png") center/cover no-repeat; */ 
+    
+    position: relative; /* 子要素 (.hero-image, .container) のabsolute配置の基準にする */
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+
+    /* 高さを設定。画像の高さに追従するので固定の高さは削除 */
+    height: auto; /* ★変更★ */
+    /* calc(100vh - 60px) や padding-bottom: 50% は削除 */
+
+    display: block; /* Flexboxは画像と文字の配置に使うので、hero自体はブロック要素に */
+    
+    padding: 0; 
+    z-index: 1; 
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); 
-  z-index: 0;
+/* Heroセクション内の画像 */
+.hero-image {
+    width: 100%; /* 親要素 (hero) の幅いっぱいに広がる */
+    height: auto; /* 幅に合わせて高さを自動調整し、アスペクト比を維持 */
+    display: block; /* 画像の下にできる余白をなくす */
+    object-fit: cover; /* ★重要★: もし要素の高さが画像より低い場合、画像をトリミングして収める */
+                        /* もし画像を一切切りたくないなら `object-fit: contain;` に変更。ただし上下に余白ができる */
+                        /* 今回は「左右を切りたくない」ので、これが目的達成に一番近いです */
+    filter: brightness(0.6); /* 画像を少し暗くして文字を見やすくする（オーバーレイの代わり） */
+                             /* または background-color: rgba(0, 0, 0, 0.4); の代わりにこのプロパティを使用 */
 }
 
-.hero h2,
+/* Hero内のテキストコンテナ */
+.hero .container {
+    position: absolute; /* ★変更★: hero-imageの上に絶対配置 */
+    top: 50%; /* 上から50% */
+    left: 50%; /* 左から50% */
+    transform: translate(-50%, -50%); /* 中央寄せのトリック */
+    
+    z-index: 2; /* 画像 (hero-image) より手前に表示 */
+    color: var(--white);
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px; /* 左右のパディングのみ */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Hero内のタイトルとサブタイトル (変更なし) */
+/* ただし、z-indexは.containerが持つので、これらのz-indexは削除してもOK */
+.hero .section-title {
+    font-size: 2.8rem;
+    color: var(--white);
+    margin: 0 0 10px;
+    padding-bottom: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* position: relative; z-index: 1; は.containerが持つので不要 */
+}
+
+.hero .section-title::after {
+    content: none;
+    width: 0px;
+    height: 0px;
+}
+
 .hero p {
-  position: relative;
-  z-index: 1;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    /* position: relative; z-index: 1; は.containerが持つので不要 */
 }
 
+/* ★`hero::before` のオーバーレイは削除またはコメントアウト★ */
+/* .hero::before { ... } */
 
-.hero h2 {
-  font-size: 2rem;
-  color: var(--white);
-  border-bottom: none;
-}
-
-.hero h2::after {
-  content: "";
-  width: 0px;
-  height: 0px;
-}
-
-.hero p{
-  color: var(--white);
-  margin: -20px 0 10px ;
-}
-
+/* スマートフォン対応は無視 */
+/* @media (max-width: 768px) { ... } */
+/* @media (max-width: 480px) { ... } */
 /* 横スクロールカード */
 .scroll-gallery {
   display: flex;
@@ -279,8 +329,8 @@ nav a:hover::after {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 60px;
-  height: 60px;
+  width: 30%;
+  height: 30%;
   border-radius: 50%;
   background: #fff;
   border: 3px solid #fff;
@@ -327,30 +377,8 @@ section[id] {
 /* 作品ページ */
 .work-flex {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  flex-wrap: wrap; /* モバイルでも崩れず並ぶように */
-}
-
-.work-text {
-  flex: 1 1 50%;
-  max-width: 48%;
-  font-size: 0.95rem;
-}
-
-.work-image-box {
-  flex: 1 1 50%;
-  max-width: 48%;
-}
-
-.work-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
 .work-text {
@@ -359,79 +387,123 @@ section[id] {
 }
 
 .work-image-box {
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
   flex: 0 0 35%;
   max-width: 35%;
 }
 
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    height: auto;
-    padding: 0.5rem 1rem;
-  }
-
-  nav ul {
-    padding: 0.5rem 0;
-    align-items: center;
-  }
-
-  main {
-    padding-top: 110px;
-  }
-  
-  .scroll-gallery{
-    width: 100vw
-  }
-
-  .link-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .link-card {
-    width: 90%;
-    text-align: center;
-  }
-
-  .category-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    padding: 0 0;
-  }
-
-  .badge-overlay{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-  }
-
-  #random-grid{
-  grid-template-columns: 1fr 1fr 1fr;
-  }
-  .work-flex {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .work-text {
-    flex: 1 1 70%;
-    max-width: 70%;
-    font-size: 0.9rem;
-  }
-
-  .work-image-box {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-
-  .work-image {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-  }
+.work-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 1rem;
+        position: static; /* ヘッダーの固定を解除 */
+        box-shadow: none; /* 影を解除 */
+    }
+
+    .logo {
+        margin-bottom: 0.5rem; /* ロゴの下に少しスペース */
+    }
+
+    nav ul {
+        padding: 0.5rem 0;
+        align-items: center;
+        width: 100%; /* ナビゲーションが横幅いっぱいになるように */
+        justify-content: center; /* ナビリンクを中央寄せ */
+    }
+
+    main {
+        padding-top: 0; /* モバイルでヘッダーが固定されないので0に */
+    }
+
+    .hero {
+        height: auto; /* padding-bottomで高さを制御 */
+        display: flex;
+        flex-direction: column; /* テキストを縦に並べる */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero .section-title {
+        font-size: 1.5rem; /* モバイルでのフォントサイズ調整 */
+        margin-bottom: 5px;
+    }
+
+    .hero .section-sub {
+        font-size: 0.8rem; /* モバイルでのフォントサイズ調整 */
+    }
+
+    .section {
+        padding: 3rem 1rem; /* モバイルでのセクションパディング調整 */
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .link-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem; /* 隙間を調整 */
+    }
+
+    .link-card {
+        width: 90%;
+        padding: 0.8rem 1.5rem; /* パディング調整 */
+    }
+
+    .scroll-gallery {
+        width: 100vw;
+        padding: 0 1rem 1rem; /* 左右のパディング調整 */
+    }
+
+    .scroll-gallery img {
+        height: 120px; /* モバイルでの画像高さ調整 */
+    }
+
+  
+    .category-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      padding: 0 0;
+    }
+
+    .category-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .category-text p {
+        font-size: 0.85rem;
+    }
+
+    .work-flex {
+        flex-direction: column; /* 縦並びにする */
+        align-items: center;
+    }
+
+    .work-text {
+        max-width: 100%; /* 幅を100%に */
+        padding-right: 0;
+    }
+
+    .work-image-box {
+        position: static; /* 固定を解除 */
+        max-width: 80%; /* 画像の最大幅 */
+        margin-bottom: 1.5rem; /* テキストとの間に隙間 */
+    }
+
+    #random-grid {
+        grid-template-columns: 1fr 1fr; /* モバイルでのWORKSグリッド */
+    }
+}
+
 
 
