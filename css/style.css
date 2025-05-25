@@ -495,14 +495,13 @@ section[id] {
     }
 
     .work-image-box {
-        position: static; /* 固定を解除 */
-        max-width: 80%; /* 画像の最大幅 */
-        margin-bottom: 1.5rem; /* テキストとの間に隙間 */
+        max-width: 60%; /* 画像の最大幅 */
     }
 
     #random-grid {
         grid-template-columns: 1fr 1fr; /* モバイルでのWORKSグリッド */
     }
+    
 }
 
 
