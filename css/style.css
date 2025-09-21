@@ -133,12 +133,12 @@ nav a:hover::after {
 }
 
 .section-list li {
-    background-color: #f0f0f0; /* リスト項目の背景色を少し明るく */
-    padding: 0.8rem 1.2rem;
+    background-color: #f0f0f0; /* リスト項目の背景色 */
+    padding: 0.5rem;
     margin-bottom: 0.5rem; /* 各項目の下マージン */
     border-radius: 8px;
     color: var(--navy);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* 軽い影 */
+
 }
 
 
